@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+:root {
+    --primary-color: #007af3;
+}
+
+body {
+    background: #f2f2f2;
+    margin: 0;
+    font-family: 'Poppins';
+}
+
+.navbar {
+    background: white;
+    padding: 1em;
+
+    .logo {
+        text-decoration: none;
+        font-weight: bold;
+        color: black;
+        font-size: 1.2rem;
+
+        span {
+            color: var(--primary-color);
+        }
+    }
+
+    nav {               /*removes the navbar list since mobile first and list is within the hamburger*/
+        display: none; 
+    }
+    
+    .container {
+        display: flex; /*short for flexbox, it's a way to structure layouts*/
+        place-content: space-between; /*puts space in between the content in the container*/
+    
+    }
+}
+
+.mobile-menu {
+    cursor: pointer;
+}
+
+a {                     /*make all links this color*/
+    color: #444444;
+}
+
+ul {                /*referencing all Un-ordered lists*/
+    list-style-type: none; /*removes bullet points*/
+    padding: 0;
+    margin: 0;
+}
+
+section {       /*adding some properties to ALL sections*/
+    padding: 5em 2em;
+}
+
+.hero {
+    text-align: center;
+}
+
+.left-col {
+    .subhead {
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: .3em;
+        color: grey;
+    }
+
+    h1 {
+        font-size: 2.1rem;
+        line-height: 1.3em;
+        margin-top: .2em;       /*brings it closer to subhead above*/
+    }
+
+    .primary-cta {
+        color: white;
+        background: var(--primary-color);
+        text-decoration: none;
+        font-size: 1.4em;
+        border-radius: 5em;
+        font-weight: bold;
+        padding: .6em 1.3em;
+        display: inline-block;
+    }
+
+    .watch-video-cta {
+        display: block;     /*pushes the camera icon down*/
+        margin-top: 1.4em;
+
+        img {       /*since we're nested under watch-video-cta we don't need to specify which img. It's automatically the camera recorder icon.*/
+            margin-right: .8em;
+        }
+    }
+}
+
+.hero-img {
+    width: 70%;
+    margin-top: 3em;
+}
+
+.features-section {
+    background: #20272e
+}
