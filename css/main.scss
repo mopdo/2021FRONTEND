@@ -98,6 +98,311 @@ section {       /*adding some properties to ALL sections*/
     margin-top: 3em;
 }
 
-.features-section {
-    background: #20272e
+section.features-section {
+    background: #20272e;
+    color: white;
 }
+
+ul.features-list {
+    margin: 0;
+    padding-left: .1em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));    //advanced stuff. makes so the features list automatically detects how many columns it can use depending on screen size
+    
+    li {
+        font-size: 1.1em;
+        margin-bottom: 1em;
+        margin-left: 2em;
+        position: relative;     //to position the child code (the bullet icons) relative to this (the parent)
+
+        &:before{       //command specific to scss, it's the same as writing "li:before {}" in line 111
+            content: '';        //empty content
+            left: -2em;
+            position: absolute;     //a way to position an element within the document, and then you can use other values
+            width: 20px;
+            height: 20px;
+            background-image: url('../images/bullet.svg');   //exit the css folder and into images and find bullet icon since it's not used in HTML and can't be referenced directly
+            background-size: contain;   //fixes the icon being broken. "contains" the image
+            margin-right: .5em;
+        }
+    }
+}
+
+.features-section img {     //could have used ".dumbbell" since I sat that as the class of that img, but I wanted to have same code as tutor
+    display: none;      //removes the img in features-section because it shouldn't show in mobile resolution
+}
+
+.testimonials-section {
+    background: var(--primary-color);
+    color: white;
+
+    li {
+        background: #006bd6;
+        text-align: center;
+        padding: 2em 1em;
+        width: 80%;
+        margin: 5em auto 5em auto;    //margin on list element, auto on both left and right allows us to center the element
+        border-radius: 1em;
+        
+        img {
+            width: 5em;
+            height: 5em;
+            border: 5px solid #006bd6;
+            border-radius: 50%;     //50% is circular.
+            margin-top: -4.5em;     //pushes avatar to top of list elements
+        }
+    }
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+label {
+    display: block;     //stacks the labels (name, email, message) on top of each others
+    font-size: 1.2em;
+    margin-bottom: .5em;
+}
+
+input, textarea {   //can use comma to target two or more elements
+    width: 100%;    //stretches the input areas out to 100% of the forms' width
+    padding: .8em;
+    margin-bottom: 1em;
+    border-radius: .3em;
+    border: 1px solid gray;
+    box-sizing: border-box;     //brings in the sides so they're in line. Since we did width: 100% it made them go too far out, now we brought them back a bit
+}
+
+input[type=submit] {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    font-size: 1.3rem;
+    border: none;
+    margin-bottom: 5em;
+    border-radius: 5em;
+    padding: .8em 2em;
+    display: inline-block;
+    width: unset;       //button tightens towards the text
+    cursor: pointer;
+}
+
+iframe {    //iframe is the google embed code (maps)
+    width: 100%;
+    height: 300px;
+}
+
+nav.menu-btn {      //need to style our menu (//commented out the nav styling on top that's for mobile first to work on this one visually
+    display: block;
+}
+
+nav {
+    position: fixed;
+    z-index: 999;   //you can place z-index on elements with position fixed or absolute. A really high index like this means it's going to sit on top of everything
+    width: 66%;
+    right: 0;   //what's this?
+    top: 0;
+    background: #20272E;
+    height: 100vh;  //means the height of the device or the browser 
+    padding: 1em;
+
+    ul.primary-nav {
+        margin-top: 5em;
+    }
+
+    li {
+
+        a {
+            color: white;
+            text-decoration: none;
+            display: block; //have to put display: block; on "a"-elements / hyperlinks in order to add padding and margin and stuff.
+            padding: .5em;
+            font-size: 1.3em;
+            text-align: right;
+
+            &:hover {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.mobile-menu-exit {
+    float: right;   //pushes it right
+    margin: .5em;
+    cursor: pointer;
+}
+
+
+@media only screen and (min-width: 768px) { //responsive part. if screen wider than 768px, all styling below will apply
+
+    .mobile-menu, .mobile-menu-exit {
+        display: none;      //hides hamburger and exit
+
+    }
+
+    .navbar .container {
+        display: grid;
+        grid-template-columns: 180px auto; //2 columns. 180px for the logo, auto means the rest can take up the rest of the space
+        justify-content: unset;
+    }
+
+    .navbar nav {
+        display: flex;
+        justify-content: space-between;
+        background: none;
+        position: unset; //cause it was previously fixed
+        height: auto; //cause it was previously 100vh
+        width: 100%;
+        padding: 0;
+
+        ul {
+            display: flex;
+        }
+
+        a {
+            color: black;
+            font-size: 1em;
+            padding: .1em 1em;
+        }
+
+        ul.primary-nav {
+            margin: 0;
+        }
+
+        li.current a {
+            font-weight: bold;
+        }
+        li.go-premium-cta a {
+            color: var(--primary-color);
+            border: 3px solid var(--primary-color);
+            border-radius: 5em;
+            font-weight: bold;
+            margin-top: -.2em;
+
+            &:hover {
+                background: var(--primary-color);
+                color: white;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1080px) {
+    .container {
+        width: 1080px;
+        margin: 0 auto;
+    }
+
+    section {
+        padding: 10em 4em;
+    }
+    
+    .hero .container {
+        display: flex;
+        justify-content: space-between;
+        text-align: left;
+
+        .left-col {
+            margin: 3em 3em 0 5em;
+
+            h1 {
+                font-size: 3em;
+                //width: 90%;
+            }
+        }
+    }
+
+    .hero-img {
+        width: 30%;
+        margin-right: 0em;
+    }
+
+    .hero-cta {
+        display: flex;
+    }
+    .primary-cta {
+       // margin-right: 1em;
+    }
+
+    ul.features-list {
+       display: block;
+       margin-left: 5em;
+       
+       li {
+           font-size: 1.4em;
+
+          &:before {    //enlargen the icons in features list
+               width: 30px;
+               height: 30px;
+           }
+       }
+    }
+
+    .features-section {
+        position: relative; //this has to be relative for the img below to be absolute
+
+        img {
+            display: block;
+            position: absolute;
+            right: 0;
+            width: 350px;
+            bottom: -2em;
+            transform: rotate(180deg);
+        }
+    }
+
+    .testimonials-section ul {
+        display: flex;  //floats them up and besides each other instead of a stack
+        
+        li {
+            margin: 0 1em;
+        }
+    }
+    
+    .contact-section {
+        position: relative;
+
+        .container {
+            display: flex;
+        }
+    }
+
+    .contact-right {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 45%;
+        height: 100%;
+
+        iframe {
+            height: 100%;
+        }
+    }
+}
+
+@media only screen and (min-width: 1450px) {
+    .features-section {
+
+        &:before {
+            content: '';
+            position: absolute;
+            width: 10%;
+            height: 20em;
+            background: var(--primary-color);
+            left: 0;
+            top: -4em;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 20em;
+            background: url('../images/dots.svg') no-repeat;
+            left: 4.5;
+            top: 2em;
+        }
+    }
+}
+

@@ -50,7 +50,7 @@
 
     <section class="features-section">
         <div class="container">
-            <ul>
+            <ul class="features-list">
                 <li>Several Workout Formats</li>
                 <li>Share Pre-Made Workouts or Customize Your Own</li>
                 <li>Shareable Links to Private Challenges</li>
@@ -59,30 +59,32 @@
                 <li>Confetti Explosions!</li>
             </ul>
 
-            <img src="images/home-workout.jpeg" alt="Dumbbells and workout band">
+            <img src="images/home-workout.jpeg" class="dumbbell" alt="Dumbbells and workout band">
         </div>
     </section>
 
     <section class="testimonials-section">
         <div class="container">
-            <li>
-                <img src="images/person.jpg" alt="Person">
+            <ul>
+                <li>
+                    <img src="images/person.jpg" alt="Person">
 
-                <blockquote>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aspernatur animi nostrum expedita impedit alias!"</blockquote>
-                <cite>- Jane Doe</cite>
-            </li>
-            <li>
-                <img src="images/person.jpg" alt="Person">
+                    <blockquote>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aspernatur animi nostrum expedita impedit alias!"</blockquote>
+                    <cite>- Jane Doe</cite>
+                </li>
+                <li>
+                    <img src="images/person.jpg" alt="Person">
 
-                <blockquote>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aspernatur animi nostrum expedita impedit alias!"</blockquote>
-                <cite>- Jan Doe</cite>
-            </li>
-            <li>
-                <img src="images/person.jpg" alt="Person">
+                    <blockquote>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aspernatur animi nostrum expedita impedit alias!"</blockquote>
+                    <cite>- Jan Doe</cite>
+                </li>
+                <li>
+                    <img src="images/person.jpg" alt="Person">
 
-                <blockquote>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aspernatur animi nostrum expedita impedit alias!"</blockquote>
-                <cite>- John Doe</cite>
-            </li>
+                    <blockquote>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aspernatur animi nostrum expedita impedit alias!"</blockquote>
+                    <cite>- John Doe</cite>
+                </li>
+            </ul>
         </div>
     </section>
 
@@ -109,5 +111,24 @@
             </div>
         </div>
     </section>
+
+    <script> //javascript inc.
+
+        const mobileBtn = document.getElementById('mobile-cta') //this allows us to reference the menubutton with the id="mobile-cta" in line 15
+            nav = document.querySelector('nav')        //instead of getElementById you can use querySelector to reference elements that doesn't have an id
+            mobileBtnExit = document.getElementById('mobile-exit');     //semicolon here at the end one
+
+        mobileBtn.addEventListener('click', () => {     //a parameter 'click' and an arrow-function. basically means that when somebody clicks on that button, "do whatever is inside the curly braces"
+            //in these lines of code we want to "unhide" the navbar/hamburger when it's clicked. (right now it's display: none; --> when clicked we need to uncheck that)
+            nav.classList.add('menu-btn')
+        })
+
+        mobileBtnExit.addEventListener('click', () => {
+            //in these lines we want to hide the menu again when the exit button is clicked
+            nav.classList.remove('menu-btn')
+        })
+
+    </script>
+
 </body>
 </html>
